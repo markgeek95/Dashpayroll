@@ -1,0 +1,92 @@
+
+/*--- For Loader Icon ---*/
+
+.full_loader{
+    position: fixed;!important;
+    background: rgba(255, 255, 255, 0.7);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 99999999;
+}
+.full_loader .loader_waiting{
+    top: 30%; !important;
+    left: 45%; !important;
+    position: absolute;
+    margin-left: -15px;
+    margin-top: -15px;
+    color: #000;
+}
+.full_loader .loader_waiting h4{
+    font-size: 18px;
+    text-align: center;
+    font-weight: bold;
+}
+@media only screen and (max-width: 375px) {
+    /* For mobile phones: */
+    .full_loader .loader_waiting{
+        top: 20%; !important;
+        left: 30%; !important;
+    }
+}
+
+
+.container_style{
+    border-right: 2px solid #0265FE;
+    border-left: 2px solid #0265FE;
+    padding: 50px;
+    padding-top: 20px;
+}
+
+
+.company_info_form_style{
+    min-height:50px;
+    max-height:90px;
+    resize: vertical;
+}
+
+.text-red{
+    color: red;
+}
+
+/*
+a.btn{
+    padding-top: 4px; !important;
+    padding-bottom: 4px; !important;
+}
+a.btn i{
+    font-size: 12px;
+}*/
+
+
+/*--- For Loader Icon ---*/
+.loaderRefresh{
+    position: absolute;
+    background: rgba(255, 255, 255, 0.7);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    z-index: 99999999;
+}
+.loaderRefresh .loaderWaiting{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    margin-left: -15px;
+    margin-top: -15px;
+    color: #000;
+}
+.loaderRefresh .loaderWaiting i{
+    font-size: 30px;
+    vertical-align: middle
+}
+
+.login-wrapper{
+    padding: 15px;
+    background-color: #fff;
+    border-radius: 5px;
+}

@@ -1,0 +1,18 @@
+input[type=button]:hover
+{
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+}
+
+input[type=button]
+{
+ border:none;
+ background-color:black;
+ color:white;
+ padding:15px 35px;
+}

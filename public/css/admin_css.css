@@ -1,0 +1,116 @@
+.mt-20{	
+	margin-top: 20px;
+}
+.mt-30{
+	margin-top: 30px;
+}
+.mt-50{
+	margin-top: 50px;
+}
+.modal-open {
+  overflow: visible;
+
+}
+.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
+  padding-right:0px!important;
+}
+.mt-100{	
+	margin-top: 100px;
+	}.mt-120{	
+		margin-top: 120px;
+	}
+	.usernamevalid
+	{
+		border:1px solid red !important; 
+	}
+	.passwordvalid
+	{
+		border:1px solid red !important; 
+	}
+	p#titletext
+	{
+		font-family:impact,trebuchet ms;
+		font-size: 25px;
+		color:#656565;
+	}
+	p#textversion
+	{
+		font-family:arial;
+		color:#656565;	
+	}
+	.btn-proceed{	
+		background: #0265FE;	
+		border:1px solid #00CCCD;	
+		border-radius: 0px;
+	}
+	.form-proceed{
+		border-radius: 0px;
+		}.nav-idea
+		{	
+			background: #14447C;	border: none;
+			border-radius: 0px;}.nav-idea{	
+				background: #14447C;	border: none;	
+				border-radius: 0px;}.brand{	
+					color: #fff;
+					}#navigators li a{	
+						color: #fff;	font-weight: bold;
+						}#brand{	
+							color: #fff;	
+							font-weight: bold;
+							}.btn-submit{	
+								background: #14447C;	
+								border:1px solid #14447C;	
+								border-radius: 0px;	width: 50%;
+							}
+/* loader css */
+.loader{
+  width: 100px;
+  height: 100px;
+  border-radius: 100%;
+  position: relative;
+  margin: 0 auto;
+}
+
+#loader-6{
+  top: 40px;
+  left: -2.5px;
+}
+
+#loader-6 span{
+  display: inline-block;
+  width: 5px;
+  height: 20px;
+  background-color: #a5d0ff;
+}
+
+#loader-6 span:nth-child(1){
+  animation: grow 1s ease-in-out infinite;
+}
+
+#loader-6 span:nth-child(2){
+  animation: grow 1s ease-in-out 0.15s infinite;
+}
+
+#loader-6 span:nth-child(3){
+  animation: grow 1s ease-in-out 0.30s infinite;
+}
+
+#loader-6 span:nth-child(4){
+  animation: grow 1s ease-in-out 0.45s infinite;
+}
+
+@keyframes grow{
+  0%, 100%{
+    -webkit-transform: scaleY(1);
+    -ms-transform: scaleY(1);
+    -o-transform: scaleY(1);
+    transform: scaleY(1);
+  }
+
+  50%{
+    -webkit-transform: scaleY(1.8);
+    -ms-transform: scaleY(1.8);
+    -o-transform: scaleY(1.8);
+    transform: scaleY(1.8);
+  }
+}

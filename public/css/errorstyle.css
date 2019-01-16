@@ -1,0 +1,61 @@
+body.bg{
+
+background-color:#0265FE;
+
+}
+div.errordiv
+{
+
+	font-family: Trebuchet MS;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+	color: white;
+
+}
+span
+{
+
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%, -50%);
+
+
+}
+h1
+{
+
+	 text-shadow: 2px 2px #FF0000;
+	font-size:8.2vw !important;
+
+}
+p
+{
+
+font-family: Trebuchet MS;
+
+}
+
+img
+{
+
+	max-width: auto;
+}
+button
+{
+		font-family: Trebuchet MS, Arial, Helvetica !important;
+color:black !important;
+width:100px;
+
+}
+button:hover
+{
+	font-family: Trebuchet MS, Arial, Helvetica;
+	transition: 0.3s;
+background-color: #FFC600;
+color:white !important;
+width:100px;
+
+}

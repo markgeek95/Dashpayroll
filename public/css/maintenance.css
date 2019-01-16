@@ -1,0 +1,295 @@
+/* Margins */
+
+.mr-10
+{
+  margin-right: 10px;
+}
+
+.mr-20
+{
+  margin-right: 20px;
+}
+
+.ml-10
+{
+  margin-left: 10px;
+}
+.ml-17
+{
+  margin-left: 17px;
+}
+.ml-20
+{
+  margin-left: 20px;
+}
+.ml-25
+{
+  margin-left: 25px;
+}
+
+
+.mt-5{
+  margin-top:5px;
+}
+.mt-10
+{
+  margin-top: 10px;
+}
+.mt-15{
+  margin-top: 15px;
+}
+.mt-20
+{
+  margin-top: 20px;
+}
+.mt-40
+{
+  margin-top: 40px;
+}
+
+.mb-20
+{
+  margin-bottom: 20px;
+}
+.mb-40
+{
+  margin-bottom: 40px;
+}
+
+
+
+/*  Panel-Tables  */
+
+.paneltable{
+  box-shadow: 1px 0px 1px 1px #9F9F9F;
+  padding:12px;
+  border-radius:0;
+} 
+.container-deduction{
+  box-shadow: 1px 0px 1px 1px #9F9F9F;
+  padding:60px;
+  border-radius:0;
+}
+
+
+/* Alert   */
+.alert-header{
+  border-radius: 0px;
+}
+
+/* Buttons */
+.btn-groups-form > .btn{
+ border-radius: 0px;
+}
+
+.btn-update{
+ background-color: #0265FE;
+ color:white;
+}
+.btn-update:hover{
+ color:white;
+}
+.btn-update:focus{
+  color:white;
+}
+
+.btn-save{
+ background-color: #0265FE;
+ color:white; 
+}
+.btn-save:hover{
+  color:white;
+}
+.btn-save:focus{
+ background-color: #0265FE;
+ color:white;
+}
+
+.btn-cancel{
+ background-color: #DDDDDD;
+ color:#333333;
+}
+.btn-cancel:hover{
+  color:#333333;
+}
+.btn-cancel:focus{
+ background-color:  #DDDDDD;
+ color:#333333;
+}
+
+
+.alert-success{
+  background-color: #449D44;
+  color:white;
+  border-radius: 0px;
+}
+
+.back-btn{
+  border-radius:0%;
+  padding:15px;
+  margin:0;
+}
+.back-btn:hover{
+ background-color: #0265FE;
+ border-color: #0265FE;
+}
+.back-buttons{
+  color:white;
+}
+.back-buttons:hover{
+  color:white;
+  text-decoration: none;
+}
+
+
+.btn-closing{
+  color:white;
+}
+.btn-closing:hover{
+  color:white;
+  text-decoration: none;
+}
+
+
+.btn-container{
+ margin-left: 2%;
+}
+.button-groups{
+  padding:0;  
+  z-index: 100;
+}
+.btn-addloan{
+  margin-bottom:2%;
+}
+
+
+
+/* tables */
+
+.thead-primary{
+  background-color: #286090;
+  color:white;
+}
+.actionsth{
+  text-align:text-center;
+  width:150px;
+}
+
+
+#EmployeeTable_info{
+  margin-top:6%;
+}
+#EmployeeTable_paginate{
+  margin-top:3%;
+}
+
+
+
+/* modal */
+
+.modal-content{
+  border-radius: 0%;
+  width:100%;
+  border-color:gray;
+}
+/*.modal{
+  overflow-y:hidden !important;
+}*/
+/*.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom {
+  padding-right:0px !important;
+}*/
+.modal-bgcolor{
+  color:white;
+  background: linear-gradient(259deg, rgba(3,104,255,1) 0%, rgba(0,51,133,1) 100%);
+  /* background-color:#0265FE; */
+}
+.modal-bgcolor-delete{
+  color:white;
+  background: linear-gradient(143deg, rgba(158,0,0,1) 0%, rgba(255,50,43,1) 100%);
+  /* background-color:#0265FE; */
+}
+
+.mdl-title{
+  font-family:Arial;
+  font-size:16px;
+}
+
+
+
+
+/*  others   */
+.dash-header{
+  background-color: #286090
+}
+
+.padding{
+  padding:0px;
+}
+
+.select-class{
+  padding:0;
+}
+
+.font-title{
+  font-size:20px;
+}
+.form-group>label{
+  text-align: left;
+}
+.form-inc-dec{
+  padding:15px
+}
+.h4-title{
+  color:red;
+}
+
+
+/* bank and assign bank css  */
+
+.back-button{
+  font-size:1.5em;
+}
+.back-button:hover{
+  text-decoration:none;
+  color:#286090;
+}
+.alert-primary{
+  background-color: #286090;
+  color:white;
+}
+.spinner {
+  width: 100px;
+}
+.spinner input {
+  text-align: right;
+}
+.input-group-btn-vertical {
+  position: relative;
+  white-space: nowrap;
+  width: 1%;
+  vertical-align: middle;
+  display: table-cell;
+}
+.input-group-btn-vertical > .btn {
+  display: block;
+  float: none;
+  width: 100%;
+  max-width: 100%;
+  padding: 8px;
+  margin-left: -1px;
+  position: relative;
+  border-radius: 0;
+}
+.input-group-btn-vertical > .btn:first-child {
+  border-top-right-radius: 4px;
+}
+.input-group-btn-vertical > .btn:last-child {
+  margin-top: -2px;
+  border-bottom-right-radius: 4px;
+}
+.input-group-btn-vertical i{
+  position: absolute;
+  top: 0;
+  left: 4px;
+}
+
