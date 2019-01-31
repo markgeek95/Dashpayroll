@@ -51,8 +51,6 @@
 
 
 
-
-
 {{-- scripts --}}
 
 <script src="{{ asset('public/plugins/vue/vue.js') }}"></script>
@@ -81,7 +79,6 @@
 <script src="{{ asset('public/plugins/js/maintenance.js') }}"></script>
 <script src="{{ asset('public/plugins/js/holidayrestday.js') }}"></script>
 
-
 @include('messages.toastr')
 
 
@@ -92,8 +89,6 @@
 
 {{-- custom scripts goes here --}}
 @yield('pagescript')
-
-
 
 
 </body>

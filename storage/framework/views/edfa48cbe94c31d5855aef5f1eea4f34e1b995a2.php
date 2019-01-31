@@ -112,9 +112,7 @@
 
 
 <?php $__env->startSection('pagescript'); ?>
-<script>
-    $('#holiday_new_modal').modal()
-</script>
+
 <?php $__env->stopSection(); ?>
 
 

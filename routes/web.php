@@ -53,7 +53,50 @@ Route::resource('leave', 'LeaveController');
 Route::get('holiday_types', 'HolidayController@holiday_type');
 Route::resource('holiday', 'HolidayController');
 
+/* Rest Day */
+Route::resource('rest_day', 'RestDayController');
 
+
+Route::resource('shifts', 'ShiftController');
+
+
+/*---- OTHER SETUP -----*/
+
+
+/* Banks */
+Route::get('bank_delete/{id?}', 'BankController@delete');
+Route::resource('banks', 'BankController');
+
+
+
+
+/* Departments */
+Route::resource('departments', 'DepartmentController');
+
+
+
+/* Positions */
+Route::resource('positions', 'PositionController');
+
+
+
+/* Positions */
+Route::resource('cost_center', 'CostCenterController');
+
+
+/* Positions */
+Route::resource('class_list', 'ClassListController');
+
+
+
+/* Positions */
+Route::resource('employee_status', 'EmployeeStatusController');
+
+
+
+
+/* Positions */
+Route::resource('overtime_nightdifferential', 'OvertimeNightDifferentialController');
 
 
 

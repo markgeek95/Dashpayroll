@@ -40,6 +40,14 @@ var vue_app = new Vue({
         leave_array: [],
 
         holiday_types_array: {},
+
+
+        shifts_array: {}, // store shifts array here
+
+
+        bank: {}, // for updating banks
+
+        ot_nightdifferential: {}, // OT
     },
 
 
@@ -638,6 +646,8 @@ var vue_app = new Vue({
                 this.annual_tax_delete();
             }else if (delName == 'leave_delete') {
                 this.leave_delete();
+            }else if (delName == 'bank_delete') {
+                this.bank_delete();
             }
         },
 
@@ -840,7 +850,377 @@ var vue_app = new Vue({
         },
 
 
+        rest_day_new: function () {
+            var root_element = this; // the parent element
+            $('#rest_day_new_modal').modal();
+            $('#rest_day_new_modal').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/shifts',
+                type: "get",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                root_element.shifts_array = response;
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#rest_day_new_modal').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
 
+
+        rest_day_new_submit: function (event) {
+            var root_element = this; // the parent element
+            var data = $(event.target).serialize();
+            $('#rest_day_new_modal').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/rest_day',
+                type: "post",
+                data: data,
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                if ($.isEmptyObject(response.errors)) {
+                    toaster('success', response.success);
+                    location.reload();
+                }else{
+                    toaster('error', 'Leave Not Saved.');
+                    root_element.errors = response.errors;
+                }
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#rest_day_new_modal').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+
+
+
+
+
+        // for editing of banks
+        banks_edit: function ($id) {
+            var root_element = this; // the parent element
+            $('#banks_edit_modal').modal();
+            var data = $(event.target).serialize();
+            $('#banks_edit_modal').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/banks/'+$id+'/edit',
+                type: "get",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                root_element.bank = response;
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#banks_edit_modal').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+
+
+        bank_edit_submit: function (event) {
+            var root_element = this; // the parent element
+            var data = $(event.target).serialize();
+            $('#banks_edit_modal').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/banks/'+root_element.bank.id,
+                type: "post",
+                data: data,
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                if ($.isEmptyObject(response.errors)) {
+                    toaster('success', response.success);
+                    location.reload();
+                }else{
+                    toaster('error', 'Leave Not Saved.');
+                    root_element.errors = response.errors;
+                }
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#banks_edit_modal').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+
+        bank_delete: function (){
+            var root_element = this; // the parent element
+            $('#delete_modal').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/bank_delete/'+root_element.global_delete_id,
+                type: "get",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                toaster('info', 'Bank Has Been Deleted.');
+                location.reload();
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+        },
+
+
+
+        departments_new_open_modal: function () {
+            $('#department_modal').modal();
+        },
+
+
+
+        department_new_submit: function (event) {
+            var root_element = this; // the parent element
+            var data = $(event.target).serialize();
+            $('#department_modal').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/departments',
+                type: "post",
+                data: data,
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                if ($.isEmptyObject(response.errors)) {
+                    toaster('success', response.success);
+                    location.reload();
+                }else{
+                    toaster('error', 'Department Not Saved.');
+                    root_element.errors = response.errors;
+                }
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#department_modal').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+
+        position_new_open_modal: function () {
+            $('#position_modal').modal();
+        },
+
+
+
+        position_new_submit: function (event) {
+            var root_element = this; // the parent element
+            var data = $(event.target).serialize();
+            $('#position_modal').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/positions',
+                type: "post",
+                data: data,
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                if ($.isEmptyObject(response.errors)) {
+                    toaster('success', response.success);
+                    location.reload();
+                }else{
+                    toaster('error', 'Position Not Saved.');
+                    root_element.errors = response.errors;
+                }
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#position_modal').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+
+        cost_center_new_open_modal: function () {
+            $('#cost_center_modal').modal();
+        },
+
+
+
+        cost_center_new_submit: function (event) {
+            var root_element = this; // the parent element
+            var data = $(event.target).serialize();
+            $('#cost_center_modal').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/cost_center',
+                type: "post",
+                data: data,
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                if ($.isEmptyObject(response.errors)) {
+                    toaster('success', response.success);
+                    location.reload();
+                }else{
+                    toaster('error', 'Cost Center Not Saved.');
+                    root_element.errors = response.errors;
+                }
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#cost_center_modal').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+        open_employee_status_new_modal: function () {
+            $('#employee_status_new_modal').modal();
+        },
+
+
+        employee_status_new_submit: function () {
+            var root_element = this; // the parent element
+            var data = $(event.target).serialize();
+            $('#employee_status_new_modal').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/employee_status',
+                type: "post",
+                data: data,
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                if ($.isEmptyObject(response.errors)) {
+                    toaster('success', response.success);
+                    location.reload();
+                }else{
+                    toaster('error', 'Cost Center Not Saved.');
+                    root_element.errors = response.errors;
+                }
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#employee_status_new_modal').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+
+        open_night_differential_modal: function () {
+            $('#overtime_nightdifferential_new_modal').modal();
+        },
+
+
+
+
+        overtime_nightdifferential_new_submit: function (event) {
+            var root_element = this; // the parent element
+            var data = $(event.target).serialize();
+            $('#overtime_nightdifferential_new_modal').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/overtime_nightdifferential',
+                type: "post",
+                data: data,
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                if ($.isEmptyObject(response.errors)) {
+                    toaster('success', response.success);
+                    location.reload();
+                }else{
+                    toaster('error', 'Overtime Night Differential Not Saved.');
+                    root_element.errors = response.errors;
+                }
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#overtime_nightdifferential_new_modal').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+
+        overtime_nightdifferential_edit: function ($id) {
+            var root_element = this; // the parent element
+            $('#overtime_nightdifferential_edit_modal').modal();
+            var data = $(event.target).serialize();
+            $('#overtime_nightdifferential_edit_modal').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/overtime_nightdifferential/'+$id+'/edit',
+                type: "get",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                root_element.ot_nightdifferential = response;
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#overtime_nightdifferential_edit_modal').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+        overtime_nightdifferential_edit_submit: function (event) {
+            var root_element = this; // the parent element
+            var data = $(event.target).serialize();
+            $('#overtime_nightdifferential_edit_modal').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/overtime_nightdifferential/'+root_element.ot_nightdifferential.id,
+                type: "post",
+                data: data,
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                if ($.isEmptyObject(response.errors)) {
+                    toaster('success', response.success);
+                    location.reload();
+                }else{
+                    toaster('error', 'Overtime Night Differential Not Saved.');
+                    root_element.errors = response.errors;
+                }
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#overtime_nightdifferential_edit_modal').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
 
 
 

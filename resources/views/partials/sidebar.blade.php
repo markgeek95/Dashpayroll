@@ -26,13 +26,13 @@
                         <a href="{{ url('philhealth') }}">Government Tables</a>
                     </li>
                     <li>
-                        <a href="Maintenance/tax/">Tax Tables</a>
+                        <a href="{{ url('withholding_tax') }}">Tax Tables</a>
                     </li>
                     <li>
                         <a href="Maintenance/statutorydeduction/">Statutory Deduction Schedule</a>
                     </li>
                     <li>
-                        <a href="Maintenance/leave/">Leave Table</a>
+                        <a href="{{ url('leave') }}">Leave Table</a>
                     </li>
                     <li id="rippleon">
                         <a href="#">
@@ -41,31 +41,31 @@
                             <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="Maintenance/bank/">Banks</a>
+                                <a href="{{ url('banks') }}">Banks</a>
                             </li>
                             <li>
                                 <a href="Maintenance/shift/">Shift</a>
                             </li>
                             <li>
-                                <a href="Maintenance/department/">Department</a>
+                                <a href="{{ url('departments') }}">Department</a>
                             </li>
                             <li>
-                                <a href="Maintenance/position/">Position</a>
+                                <a href="{{ url('positions') }}">Position</a>
                             </li>
                             <li>
-                                <a href="Maintenance/costcenter/">Cost Center</a>
+                                <a href="{{ url('cost_center') }}">Cost Center</a>
                             </li>
                             <li>
-                                <a href="Maintenance/classList/">Class List</a>
+                                <a href="{{ url('class_list') }}">Class List</a>
                             </li>
                             <li>
                                 <a href="Maintenance/payrollsetup/">Payroll Setup</a>
                             </li>
                             <li>
-                                <a href="Maintenance/employeestatus/">Employee Status</a>
+                                <a href="{{ url('employee_status') }}">Employee Status</a>
                             </li>
                             <li>
-                                <a href="Maintenance/holiday/">Holiday And Rest Day Tables</a>
+                                <a href="{{ url('holiday') }}">Holiday And Rest Day Tables</a>
                             </li>
                             <li>
                                 <a href="Maintenance/otnightdifferential/">Overtime and Night Differential Tables</a>

@@ -112,9 +112,7 @@
 
 
 @section('pagescript')
-<script>
-    $('#holiday_new_modal').modal()
-</script>
+
 @endsection
 
 

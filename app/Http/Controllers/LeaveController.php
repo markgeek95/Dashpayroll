@@ -52,6 +52,7 @@ class LeaveController extends Controller
         }else{
             return response(['errors' => $validator->errors()->all()]);
         }
+
     }
 
 
@@ -109,6 +110,7 @@ class LeaveController extends Controller
 
     public function delete($id)
     {
+
         LeaveTable::find($id)->delete();
         return;
     }

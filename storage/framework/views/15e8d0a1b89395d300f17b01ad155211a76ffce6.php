@@ -108,9 +108,6 @@
 
 
 <?php $__env->startSection('pagescript'); ?>
-<script>
-  $('#withholding_tax').modal();
-</script>
 <?php $__env->stopSection(); ?>
 
 
