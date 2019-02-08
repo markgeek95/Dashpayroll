@@ -48,6 +48,8 @@ var vue_app = new Vue({
         bank: {}, // for updating banks
 
         ot_nightdifferential: {}, // OT
+
+        statutory_array: {}, // for editing statutory
     },
 
 
@@ -648,6 +650,8 @@ var vue_app = new Vue({
                 this.leave_delete();
             }else if (delName == 'bank_delete') {
                 this.bank_delete();
+            }else if (delName == 'statutory_delete') {
+                this.statutory_delete();
             }
         },
 
@@ -1219,6 +1223,150 @@ var vue_app = new Vue({
             });
             request.always(function(){
                 $('#overtime_nightdifferential_edit_modal').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+
+
+        statutory_add_modal: function () {
+            var root_element = this; // the parent element
+            $('#statutorydeduction_add').modal();
+            $('#statutorydeduction_add').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/get_frequency',
+                type: "get",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                root_element.frequency = response;
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#statutorydeduction_add').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+
+        statutory_deduction_submit: function () {
+            var root_element = this; // the parent element
+            var data = $(event.target).serialize();
+            $('#statutorydeduction_add').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/statutory_deduction_schedule',
+                type: "post",
+                data: data,
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                if ($.isEmptyObject(response.errors)) {
+                    toaster('success', response.success);
+                    location.reload();
+                }else{
+                    toaster('error', 'Statutory Deduction Schedule Not Saved.');
+                    root_element.errors = response.errors;
+                }
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#statutorydeduction_add').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+        statutory_edit: function ($id) {
+            var root_element = this; // the parent element
+            $('#statutorydeduction_edit').modal();
+            $('#statutorydeduction_edit').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/statutory_deduction_schedule/'+$id+'/edit',
+                type: "get",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                root_element.statutory_array = response;
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                root_element.get_frequency(); // get all frequency
+                $('#statutorydeduction_edit').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+        deduction_count_if: function ($i) {
+            return ($i == this.statutory_array.deduction_count)? true : false;
+        },
+
+        days_deduction_if: function ($i) {
+            return ($i == this.statutory_array.days_of_deduction)? true : false;
+        },
+
+
+        frequency_select: function ($id) {
+            return ($id == this.statutory_array.frequency_id)? true : false;
+        },
+
+
+        statutory_edit_submit: function () {
+            var root_element = this; // the parent element
+            var data = $(event.target).serialize();
+            $('#statutorydeduction_edit').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/statutory_deduction_schedule/'+root_element.statutory_array.id,
+                type: "post",
+                data: data,
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                dataType: 'json'
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                if ($.isEmptyObject(response.errors)) {
+                    toaster('success', response.success);
+                    location.reload();
+                }else{
+                    toaster('error', 'Statutory Deduction Schedule Not Saved.');
+                    root_element.errors = response.errors;
+                }
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
+            });
+            request.always(function(){
+                $('#statutorydeduction_edit').find('.loaderRefresh').fadeOut('fast');
+            });
+        },
+
+
+
+        statutory_delete: function (){
+            var root_element = this; // the parent element
+            $('#delete_modal').find('.loaderRefresh').fadeIn(0);
+            request = $.ajax({
+                url: baseUrl+'/statutory_delete/'+root_element.global_delete_id,
+                type: "get",
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            });
+            request.done(function (response, textStatus, jqXHR) {
+                console.log(response);
+                toaster('info', 'Statutory Deduction Schedule Been Deleted.');
+                location.reload();
+            });
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                console.log("The following error occured: "+ jqXHR, textStatus, errorThrown);
             });
         },
 

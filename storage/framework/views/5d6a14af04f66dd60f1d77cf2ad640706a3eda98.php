@@ -29,7 +29,7 @@
                         <a href="<?php echo e(url('withholding_tax')); ?>">Tax Tables</a>
                     </li>
                     <li>
-                        <a href="Maintenance/statutorydeduction/">Statutory Deduction Schedule</a>
+                        <a href="<?php echo e(url('statutory_deduction_schedule')); ?>">Statutory Deduction Schedule</a>
                     </li>
                     <li>
                         <a href="<?php echo e(url('leave')); ?>">Leave Table</a>

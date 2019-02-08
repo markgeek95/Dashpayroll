@@ -29,7 +29,7 @@
                         <a href="{{ url('withholding_tax') }}">Tax Tables</a>
                     </li>
                     <li>
-                        <a href="Maintenance/statutorydeduction/">Statutory Deduction Schedule</a>
+                        <a href="{{ url('statutory_deduction_schedule') }}">Statutory Deduction Schedule</a>
                     </li>
                     <li>
                         <a href="{{ url('leave') }}">Leave Table</a>

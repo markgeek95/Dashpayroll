@@ -14,6 +14,7 @@
 Route::get('/', function () {
 	return view('partials.login_username');
 });
+
 Route::post('login_now', 'LoginController@login_now');
 Route::resource('login', 'LoginController');
 
@@ -45,16 +46,32 @@ Route::get('annual_tax_delete/{id?}', 'AnnualTaxController@delete');
 Route::resource('annual_tax', 'AnnualTaxController');
 
 
+
+
+/* Statutory Deduction Schedule Table */
+Route::get('statutory_delete/{id?}', 'StatutoryDeductionScheduleController@delete');
+Route::resource('statutory_deduction_schedule', 'StatutoryDeductionScheduleController');
+
+
+
 /* leave table */
 Route::get('leave_delete/{id?}', 'LeaveController@delete');
 Route::resource('leave', 'LeaveController');
+
+
+
 
 /* holiday */
 Route::get('holiday_types', 'HolidayController@holiday_type');
 Route::resource('holiday', 'HolidayController');
 
+
+
+
 /* Rest Day */
 Route::resource('rest_day', 'RestDayController');
+
+
 
 
 Route::resource('shifts', 'ShiftController');

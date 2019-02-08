@@ -53,8 +53,6 @@
 
 
 
-
-
 <script src="<?php echo e(asset('public/plugins/vue/vue.js')); ?>"></script>
 
 <script src="<?php echo e(asset('public/plugins/js/jquery/jquery.js')); ?>"></script>
@@ -81,7 +79,6 @@
 <script src="<?php echo e(asset('public/plugins/js/maintenance.js')); ?>"></script>
 <script src="<?php echo e(asset('public/plugins/js/holidayrestday.js')); ?>"></script>
 
-
 <?php echo $__env->make('messages.toastr', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
 
 
@@ -92,8 +89,6 @@
 
 
 <?php echo $__env->yieldContent('pagescript'); ?>
-
-
 
 
 </body>
